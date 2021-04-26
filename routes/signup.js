@@ -1,34 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const User = require('../models/User');
+const signupController = require('../controllers/signup');
+const signinController = require('../controllers/signin');
+const deleteController = require('../controllers/deleteuser');
+//sign up
+router.post('/signup',signupController.singUpNewUser);
+router.post('/signin',signinController.signInNewUser);
+router.delete('/:userId',deleteController.deleteuser);
 
-
-
-router.get('/signup', async (req, res) => {
-  
- // Post.findOne({ call: req.body.call}, (err, user) => {
-  //   if (err) {
-  //     console.log(err);
-  //     res.json(err); 
-  //   } else {
-  //     if (user == null) {
-  //       const user = Post({
-  //         call: req.body.call,
-  //         password: req.body.password
-  //       });
-  //       user.save() 
-  //         .then((err) => {
-  //           if (err) {
-  //             console.log(err);
-  //             res.json(err);
-  //           } else {
-  //             console.log(user);
-  //             res.json(user);
-  //           }
-  //         });
-  //     } else {
-  //       res.json({ message: 'call is not avilable' });
-  //     }
-  //   }
-  // })
-});
+module.exports = router;

@@ -1,7 +1,6 @@
 const app = require('./app')
-require('./connection');
-async function init(){
-    await app.listen(3000);
-    console.log('Server on Localhost:3000')
-}
-init();
+const connectDB = require('./database/connection');
+
+connectDB();
+const Port = process.env.Port||3000;
+app.listen(Port,console.log('server on Localhost',Port));
